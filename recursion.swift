@@ -17,19 +17,15 @@ func evaluate(formula: String) -> Int {
             let index = formula.range(of: ")+(")
             var firstString = String(formula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 2])
-            
             var lastString = String(formula[index!.lowerBound...])
             lastString = String(lastString[2, lastString.count])
-            
             return evaluate(formula: firstString) + evaluate(formula: lastString)
         } else if formula.contains(")*(") {
             let index = formula.range(of: ")*(")
             var firstString = String(formula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 2])
-            
             var lastString = String(formula[index!.lowerBound...])
             lastString = String(lastString[2, lastString.count])
-            
             return evaluate(formula: firstString) * evaluate(formula: lastString)
         } else if formula.contains("+(") {
             var newFormula = formula
@@ -39,10 +35,8 @@ func evaluate(formula: String) -> Int {
             let index = newFormula.range(of: "+(")
             var firstString = String(newFormula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 2])
-            
             var lastString = String(newFormula[index!.lowerBound...])
             lastString = String(lastString[1, lastString.count])
-            
             return evaluate(formula: firstString) + evaluate(formula: lastString)
         } else if formula.contains("*(") {
             var newFormula = formula
@@ -52,10 +46,8 @@ func evaluate(formula: String) -> Int {
             let index = newFormula.range(of: "*(")
             var firstString = String(newFormula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 2])
-            
             var lastString = String(newFormula[index!.lowerBound...])
             lastString = String(lastString[1, lastString.count])
-            
             return evaluate(formula: firstString) * evaluate(formula: lastString)
         } else if formula.contains(")+") {
             var newFormula = formula
@@ -65,10 +57,8 @@ func evaluate(formula: String) -> Int {
             let index = newFormula.range(of: ")+")
             var firstString = String(newFormula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 1])
-            
             var lastString = String(newFormula[index!.lowerBound...])
             lastString = String(lastString[2, lastString.count])
-            
             return evaluate(formula: firstString) + evaluate(formula: lastString)
         } else if formula.contains(")*") {
             var newFormula = formula
@@ -78,10 +68,8 @@ func evaluate(formula: String) -> Int {
             let index = newFormula.range(of: ")*")
             var firstString = String(newFormula[..<index!.upperBound])
             firstString = String(firstString[0, firstString.count - 1])
-            
             var lastString = String(newFormula[index!.lowerBound...])
             lastString = String(lastString[2, lastString.count])
-            
             return evaluate(formula: firstString) * evaluate(formula: lastString)
         } else {
             if formula.count == 2 {
